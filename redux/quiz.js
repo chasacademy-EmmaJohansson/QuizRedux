@@ -7,7 +7,7 @@ const initialState = {
   score: 0,
   questions: [
     {
-      title: "Vilket fotbollslag kallas för `The Red Devils`?",
+      title: "What football team is called the `The Red Devils`?",
       alt1: "Manchester United",
       alt2: "Bayern Munchen",
       alt3: "Manchester City",
@@ -15,19 +15,35 @@ const initialState = {
       id: 1,
     },
     {
-      title: "Vilken frukt bor SvampBob i?",
-      alt1: "Äpple",
-      alt2: "Vindruva",
-      alt3: "Ananas",
+      title: "In what fruit does SpongeBob SquarePant live in?",
+      alt1: "Apple",
+      alt2: "Orange",
+      alt3: "Pineapple",
       correctAnswer: 3,
       id: 2,
     },
   ],
+  newQuestion: {
+    title: "",
+    alt1: "",
+    alt2: "",
+    alt3: "",
+    correctAnswer: "",
+  },
 };
 
 export const [
   useQuiz,
-  { addQuestion, removeQuestion, updateQuestion, answerQuestion, startQuiz },
+  {
+    addQuestion,
+    removeQuestion,
+    updateQuestion,
+    answerQuestion,
+    startQuiz,
+    updateNewQuestion,
+    clearNewQuestion,
+    restartQuiz,
+  },
 ] = createReduxModule("Quiz", initialState, {
   addQuestion: (state, question) => {
     return { ...state, questions: [...state.questions, question] };
@@ -77,4 +93,37 @@ export const [
       quizStarted: true,
     };
   },
+  updateNewQuestion: (state, updatedFields) => {
+    return {
+      ...state,
+      newQuestion: { ...state.newQuestion, ...updatedFields },
+    };
+  },
+  clearNewQuestion: (state) => {
+    return {
+      ...state,
+      newQuestion: {
+        title: "",
+        alt1: "",
+        alt2: "",
+        alt3: "",
+        correctAnswer: "",
+      },
+    };
+  },
+  restartQuiz: (state) => {
+    return {
+      ...state,
+      quizStarted: true,
+      showResults: false,
+      currentQuestion: 0,
+      score: 0,
+    };
+  },
 });
+restartQuiz.startQuiz = (state) => {
+  return {
+    ...state,
+    quizStarted: true,
+  };
+};
