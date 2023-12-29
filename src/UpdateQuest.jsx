@@ -17,6 +17,7 @@ export default function UpdateQuest({ question }) {
       correctAnswer,
       id: question.id,
     };
+
     updateQuestion(updateList);
   }
 
@@ -28,7 +29,7 @@ export default function UpdateQuest({ question }) {
       <div className="flex flex-col gap-4 justify-center items-center ">
         <div>
           <input
-            className=" bg-green-300 font-bold w-96 border-2 border-black text-center p-2 rounded-xl"
+            className=" bg-[#B58A69] font-bold w-96 border-2 border-black text-center p-2 rounded-xl"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -61,13 +62,13 @@ export default function UpdateQuest({ question }) {
             onChange={(e) => setCorrectAnswer(e.target.value)}
           />
           <button
-            className="pr-4 p-1 pl-4 font-bold rounded-xl border-2 border-black bg-green-300 hover:bg-green-400"
+            className="pr-4 p-1 pl-4 font-bold rounded-xl border-2 border-black bg-[#d0b49f] hover:bg-[#B58A69]"
             onClick={handleUpdate}
           >
             Update
           </button>
           <button
-            className="  pr-4 p-1 pl-4 font-bold rounded-xl border-2 border-black bg-green-300 hover:bg-green-400"
+            className="  pr-4 p-1 pl-4 font-bold rounded-xl border-2 border-black bg-[#d0b49f] hover:bg-[#B58A69]"
             onClick={() => handleDelete(question.id)}
           >
             Delete

@@ -4,7 +4,7 @@ import { Provider } from "hooks-for-redux";
 import QuizPage from "./QuizPage";
 import Admin from "./Admin";
 import Root from "./Root";
-import "./app.css";
+import "./App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
